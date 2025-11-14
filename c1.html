@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moataz & Nadia Wedding</title>
+  <link rel="stylesheet" href="c2.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-mark">MN</span>
+      <span class="logo-text">Moataz &amp; Nadia</span>
+    </div>
+    <nav class="main-nav">
+      <a href="#hero">Home</a>
+      <a href="#invitation">Invitation</a>
+      <a href="#location">Location</a>
+      <a href="#countdown-section">Countdown</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-main">
+        <p class="hero-tagline">A Cinematic Wedding Night</p>
+        <h1 class="hero-title">
+          Moataz <span>&amp;</span> Nadia
+        </h1>
+        <p class="hero-subtitle">
+          25 December 2025 · Artillery House · Dar El Madfeya – Horus Hall
+        </p>
+        <div class="hero-buttons">
+          <button class="btn primary" data-scroll="#invitation">
+            View Invitation
+          </button>
+          <a
+            class="btn ghost"
+            href="https://www.google.com/maps?q=دار+المدفعية+قاعة+حورس"
+            target="_blank"
+          >
+            Open Location
+          </a>
+        </div>
+      </div>
+      <div class="hero-side-card">
+        <p class="side-label">Next Event</p>
+        <p class="side-date">25 · 12 · 2025</p>
+        <p class="side-time">6:00 PM · Cairo Time</p>
+        <p class="side-note">
+          Join us for a night of love, family, and unforgettable moments.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- Invitation Section -->
+    <section id="invitation" class="section">
+      <div class="section-heading">
+        <h2>Wedding Invitation</h2>
+        <p>Because your presence makes our story complete.</p>
+      </div>
+
+      <div class="card invitation-card">
+        <p class="inv-line-en">
+          With joy in our hearts, we invite you to celebrate our wedding.
+        </p>
+        <p class="inv-line-ar">
+          يسعدنا أن تشاركونا أسعد لحظات حياتنا في حفل زفافنا 💍
+        </p>
+
+        <div class="inv-details-grid">
+          <div class="inv-detail">
+            <span class="detail-label">Date</span>
+            <span class="detail-value">25 December 2025</span>
+          </div>
+          <div class="inv-detail">
+            <span class="detail-label">Time</span>
+            <span class="detail-value">6:00 PM</span>
+          </div>
+          <div class="inv-detail">
+            <span class="detail-label">Venue</span>
+            <span class="detail-value">Artillery House – Horus Hall</span>
+          </div>
+          <div class="inv-detail">
+            <span class="detail-label">Location</span>
+            <span class="detail-value">Dar El Madfeya · Cairo</span>
+          </div>
+        </div>
+
+        <p class="inv-quote">
+          “In this moment, two hearts become one. Join us as we celebrate love,
+          laughter, and forever.”
+        </p>
+      </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="section">
+      <div class="section-heading">
+        <h2>Location</h2>
+        <p>Find us easily and arrive in style.</p>
+      </div>
+
+      <div class="card location-card">
+        <a
+          href="https://www.google.com/maps?q=دار+المدفعية+قاعة+حورس"
+          target="_blank"
+          class="location-link"
+        >
+          <div class="location-media">
+            <img
+              src="WhatsApp Image 2025-11-14 at 00.38.28.JPEG"
+              alt="Dar El Madfeya - Horus Hall Map"
+            />
+            <div class="location-badge">Open in Google Maps</div>
+          </div>
+          <div class="location-info">
+            <h3>Dar El Madfeya – Horus Hall</h3>
+            <p class="location-text-ar">
+              📍 دار المدفعية – قاعة حورس، القاهرة – مصر
+            </p>
+            <p class="location-text-en">
+              A classic venue for a timeless night.
+            </p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section id="countdown-section" class="section">
+      <div class="section-heading">
+        <h2>Countdown</h2>
+        <p>The big night is getting closer every second.</p>
+      </div>
+
+      <div class="card countdown-card" id="countdown-container">
+        <div id="countdown"></div>
+        <div class="labels">
+          <span>Days</span>
+          <span>Hours</span>
+          <span>Minutes</span>
+          <span>Seconds</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>
+      Made with ❤️ By
+      <strong>Moataz &amp; Nadia</strong> · 25 December 2025
+    </p>
+  </footer>
+
+  <script>
+    // Smooth scroll for buttons
+    document.querySelectorAll('[data-scroll]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const target = document.querySelector(this.getAttribute('data-scroll'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Countdown
+    const targetDate = new Date('Dec 25, 2025 18:00:00').getTime();
+
+    const timer = setInterval(function () {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      const countdownEl = document.getElementById('countdown');
+      if (!countdownEl) return;
+
+      if (distance < 0) {
+        clearInterval(timer);
+        countdownEl.innerHTML = '<span class="done">🎉 The day is here! 🎉</span>';
+        document.querySelector('.labels').style.display = 'none';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor(
+        (distance % (1000 * 60 * 60)) / (1000 * 60)
+      );
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      const paddedHours = String(hours).padStart(2, '0');
+      const paddedMinutes = String(minutes).padStart(2, '0');
+      const paddedSeconds = String(seconds).padStart(2, '0');
+
+      countdownEl.innerHTML = `
+        <div class="count-segment">
+          <span class="num">${days}</span>
+          <span class="label">Days</span>
+        </div>
+        <div class="count-segment">
+          <span class="num">${paddedHours}</span>
+          <span class="label">Hours</span>
+        </div>
+        <div class="count-segment">
+          <span class="num">${paddedMinutes}</span>
+          <span class="label">Minutes</span>
+        </div>
+        <div class="count-segment">
+          <span class="num">${paddedSeconds}</span>
+          <span class="label">Seconds</span>
+        </div>
+      `;
+    }, 1000);
+  </script>
+</body>
+</html>
